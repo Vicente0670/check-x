@@ -1,0 +1,65 @@
+:root {
+  --app-color-background-header: #340000;
+  --app-color-text-shadow: #000;
+}
+
+.header {
+  display: flex;
+  justify-content: right;
+  height: 5rem;
+  background: var(--app-color-background-header);
+
+  .branding {
+    display: flex;
+    gap: .75rem;
+    align-self: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-left: .5rem;
+
+    .logo {
+      aspect-ratio: 1;
+      height: 2.5rem;
+      width: 2.5rem;
+      filter:
+        invert(.925)
+        drop-shadow(2px 2px 0px var(--app-color-text-shadow));
+    }
+
+    .sitedata {
+      max-height: 100%;
+
+      .title, .link {
+        text-shadow: 1px 1px 0px var(--app-color-text-shadow);
+      }
+
+      .title {
+        max-width: 16rem;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .link {
+        max-height: 2rem;
+        max-width: 16rem;
+        text-wrap: normal;
+        word-break: break-all;
+      }
+    }
+  }
+
+  .functions {
+    display: flex;
+    min-width: max-content;
+    flex-direction: column;
+    align-items: right;
+    padding: .25rem;
+    gap: .25rem;
+
+    button {
+      flex: 1 1 0%;
+    }
+  }
+}

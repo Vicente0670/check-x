@@ -1,0 +1,124 @@
+:root {
+  --app-scale-root-height: 35rem;
+  --app-scale-root-width: 30rem;
+
+  --app-scale-h1: 2rem;
+  --app-scale-h2: 1.75rem;
+  --app-scale-h3: 1.5rem;
+  --app-scale-p: 1rem;
+
+  --app-color-background-primary: #090101;
+  --app-color-background-button: #781414;
+  --app-color-background-button-hover: #D68F8F;
+  --app-color-background-button-active: #EAC7C7;
+  --app-color-background-button-disabled: #3c0303;
+  --app-color-background-button-text-disabled: #aaa;
+  --app-color-background-code: #1d1515;
+  --app-color-semantics: #eee;
+  --app-color-paragraph: #bbb;
+
+  --app-color-accent: #bf2e2e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color-scheme: dark;
+  touch-action: manipulation;
+  text-rendering: optimizeLegibility;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+  height: var(--app-scale-root-height);
+  width: var(--app-scale-root-width);
+  background: var(--app-color-background-primary);
+}
+
+h1,
+h2,
+h3,
+a,
+button {
+  color: var(--app-color-semantics);
+}
+
+h1 {
+  font-size: var(--app-scale-h1);
+}
+
+h2 {
+  font-size: var(--app-scale-h2);
+}
+
+h3 {
+  font-size: var(--app-scale-h3);
+}
+
+/* Will most likely not use h4, h5, or h6. */
+
+p {
+  color: var(--app-color-paragraph);
+}
+
+p,
+a {
+  font-size: var(--app-scale-p);
+}
+
+code,
+pre {
+  padding: .25rem .66rem;
+  background: var(--app-color-background-code);
+  border-radius: .5rem;
+  font-size: var(--app-scale-p);
+  font-family: "Courier New", Courier, monospace;
+}
+
+button {
+  position: relative;
+  padding: .25rem .66rem;
+  background: var(--app-color-background-button);
+  border: none;
+  border-radius: .25rem;
+  outline-offset: -2px;
+  outline: 2px solid transparent;
+  text-shadow: 1px 1px 0px #000000;
+  font-size: var(--app-scale-p);
+  font-weight: bold;
+  transition-property: background-color, outline-color, color;
+  transition-duration: .25s;
+  transition-timing-function: ease;
+
+  &:not(:disabled) {
+    &:hover {
+      background: transparent;
+      outline-color: var(--app-color-background-button-hover);
+      color: var(--app-color-background-button-hover);
+    }
+
+    &:active {
+      outline-color: var(--app-color-background-button-active);
+      color: var(--app-color-background-button-active);
+      transform: translateY(1px);
+      transition: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--app-color-background-button-hover);
+      outline-offset: 2px;
+      background: var(--app-color-background-button-hover);
+      color: var(--app-color-background-button-disabled);
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  &:disabled {
+    background: var(--app-color-background-button-disabled);
+    color: var(--app-color-background-button-text-disabled);
+  }
+}
