@@ -2,10 +2,10 @@
   --app-scale-root-height: 35rem;
   --app-scale-root-width: 30rem;
 
-  --app-scale-h1: 2rem;
-  --app-scale-h2: 1.75rem;
-  --app-scale-h3: 1.5rem;
-  --app-scale-p: 1rem;
+  --app-scale-h1: 1.3rem;
+  --app-scale-h2: 1.13rem;
+  --app-scale-h3: 1.1rem;
+  --app-scale-p: .9rem;
 
   --app-color-background-primary: #090101;
   --app-color-background-button: #781414;

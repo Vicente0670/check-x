@@ -1,5 +1,5 @@
 {
-  "name": "Metadata Xposer",
+  "name": "Check X",
   "description": "Preview, modify, and save your site's metadata tags. Works offline, on localhost, and before and after deployment.",
   "version": "1.0.0",
   "manifest_version": 3,
@@ -11,6 +11,12 @@
     "service_worker": "src/Background.ts",
     "type": "module"
   },
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "src/Content.ts" ]
+    }
+  ],
   "incognito": "split",
 
   "permissions": [

@@ -1,37 +1,13 @@
-import type { Events, RequestMessage } from "./MessageTypes";
-
-const IsDev = true;
-
-async function verifyEvent(m: RequestMessage) {
-  const ev: Events = m.event;
-
-  switch (ev) {
-
-    case "reloadpage": {
-      await chrome.tabs.reload();
-      break;
-    }
-
-    case "reloadmetadata": {
-      console.info(`Event ${ev} is known.`); // temp
-      break;
-    }
-
-    default: {
-      console.error(`${onExtensionOpen.name} did not recognize event named "${ev}".`);
-    }
-  }
-}
+import { ISDEV } from "./MessageTypes";
+import type { RequestMessage, ReturnMessage } from "./MessageTypes";
 
 async function onExtensionOpen(
   m: RequestMessage,
   s: chrome.runtime.MessageSender,
-  sendResponse: (res: unknown) => void
+  sendResponse: (res: ReturnMessage) => void
 ) {
-  
-  await verifyEvent(m);
 
-  if (IsDev) {
+  if (ISDEV) {
     console.groupCollapsed(onExtensionOpen.name);
     console.log(m);
     console.log(s);
