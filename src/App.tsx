@@ -20,7 +20,6 @@ export default function App() {
     await chrome.tabs.reload();
   }
 
-  // dawg this isn't C why can't i place this anywhere!?!!
   const auditMetadata = useCallback(async (msg?: RequestMessage): Promise<ReturnMessage> => {
 
     async function requestTabId(): Promise<number | undefined> {
@@ -45,11 +44,11 @@ export default function App() {
     setTitle(t);
     setLink(l);
 
-    setOpenGraph(og => {
-      return og;
+    setOpenGraph(() => {
+      return res.meta.OpenGraph;
     });
-    setTwitter(x => {
-      return x;
+    setTwitter(() => {
+      return res.meta.Twitter;
     });
 
     return res;
