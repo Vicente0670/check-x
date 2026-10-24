@@ -1,0 +1,53 @@
+:root {
+  --app-color-opengraph-outline: #1c1c1c;
+}
+
+.main {
+  padding: 1rem;
+  box-sizing: border-box;
+  outline: 1px solid var(--app-color-opengraph-outline);
+
+  .header {
+    padding-bottom: .25rem;
+    text-align: center;
+  }
+
+  .image {
+    margin-bottom: .75rem;
+    aspect-ratio: 1.91 / 1;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid var(--app-color-opengraph-outline);
+    filter: drop-shadow(4px 4px 0px var(--app-color-opengraph-outline));
+  }
+
+  &>div:not(.header) {
+    padding: .5rem;
+    outline: 1px solid var(--app-color-opengraph-outline);
+    border-radius: .25rem;
+
+    div+div {
+      margin-top: .5rem;
+    }
+
+    &>div:has(*) {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+
+      h2,
+      p,
+      a {
+        margin-right: auto;
+      }
+
+      samp:last-child {
+        align-self: right;
+        padding: .25rem;
+        background: var(--app-color-opengraph-outline);
+        border-radius: .25rem;
+        color: var(--app-color-paragraph);
+      }
+    }
+  }
+}

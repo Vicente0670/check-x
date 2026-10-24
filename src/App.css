@@ -11,11 +11,11 @@
 
   .branding {
     display: flex;
+    flex-grow: 1;
     gap: .75rem;
-    align-self: center;
     align-items: center;
     margin: 0 auto;
-    margin-left: .5rem;
+    padding-left: .5rem;
 
     .logo {
       aspect-ratio: 1;
@@ -28,38 +28,55 @@
 
     .sitedata {
       max-height: 100%;
+      box-sizing: border-box;
 
       .title, .link {
         text-shadow: 1px 1px 0px var(--app-color-text-shadow);
       }
 
       .title {
-        max-width: 16rem;
+        display: -webkit-box;
+        word-break: keep-all;
+        line-clamp: 1;
         text-overflow: ellipsis;
-        text-wrap: nowrap;
-        white-space: nowrap;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
         overflow: hidden;
       }
 
       .link {
-        max-height: 2rem;
-        max-width: 16rem;
-        text-wrap: normal;
+        display: -webkit-box;
         word-break: break-all;
+        line-clamp: 3;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
       }
     }
   }
 
   .functions {
     display: flex;
-    min-width: max-content;
     flex-direction: column;
-    align-items: right;
     padding: .25rem;
     gap: .25rem;
 
     button {
       flex: 1 1 0%;
+      min-width: max-content;
     }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  & > section {
+    border-radius: .5rem;
   }
 }

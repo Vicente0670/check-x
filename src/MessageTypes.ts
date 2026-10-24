@@ -18,7 +18,8 @@ export type ReturnMessage = RequestMessage & {
 
 export type Events = "reloadpage" | "reloadmetadata" | "initmetadata";
 
-type OpenGraphKeys = "title" | "description" | "type" | "image" | "url";
+// OpenGraph does not use "theme-color", but it remains relevant for display on specific platforms.
+type OpenGraphKeys = "title" | "description" | "type" | "image" | "url" | "theme-color";
 
 export type OpenGraph = {
   [K in OpenGraphKeys]?: string

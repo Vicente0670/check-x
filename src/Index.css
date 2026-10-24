@@ -2,20 +2,21 @@
   --app-scale-root-height: 35rem;
   --app-scale-root-width: 30rem;
 
-  --app-scale-h1: 1.3rem;
-  --app-scale-h2: 1.13rem;
+  --app-scale-h1: 1.25rem;
+  --app-scale-h2: 1.12rem;
   --app-scale-h3: 1.1rem;
   --app-scale-p: .9rem;
 
-  --app-color-background-primary: #090101;
-  --app-color-background-button: #781414;
-  --app-color-background-button-hover: #D68F8F;
-  --app-color-background-button-active: #EAC7C7;
-  --app-color-background-button-disabled: #3c0303;
+  --app-color-background-primary: #0a0a0a;
+  --app-color-background-button: #761b1b;
+  --app-color-background-button-hover: #d67979;
+  --app-color-background-button-active: #eab2b2;
+  --app-color-background-button-disabled: #360303;
   --app-color-background-button-text-disabled: #aaa;
-  --app-color-background-code: #1d1515;
+  --app-color-background-code: #151515;
   --app-color-semantics: #eee;
   --app-color-paragraph: #bbb;
+  --app-color-background-no-image: #1a1a1a;
 
   --app-color-accent: #bf2e2e;
 }
@@ -34,6 +35,7 @@ body {
   height: var(--app-scale-root-height);
   width: var(--app-scale-root-width);
   background: var(--app-color-background-primary);
+  overflow-x: clip;
 }
 
 h1,
@@ -120,5 +122,13 @@ button {
   &:disabled {
     background: var(--app-color-background-button-disabled);
     color: var(--app-color-background-button-text-disabled);
+  }
+}
+
+section {
+  img[src="/unknown.svg"] {
+    border: none;
+    outline: none;
+    background: var(--app-color-background-no-image);
   }
 }

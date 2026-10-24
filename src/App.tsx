@@ -2,16 +2,18 @@ import "./App.css";
 import { useCallback, useEffect, useState } from "react";
 import { ISDEV, type OpenGraph, type RequestMessage, type ReturnMessage, type Twitter } from "./MessageTypes";
 import type { MouseEvent } from "react";
+import Default from "./components/Default/Default";
 
 export default function App() {
   const [title, setTitle] = useState<string>("Not a valid page");
   const [link, setLink] = useState<string>("Try localhost or another domain.");
   const [openGraph, setOpenGraph] = useState<OpenGraph>({
     title: "No title provided",
-    description: "No description provided...",
+    description: "No description provided",
     type: "website",
-    image: "No image URL provided",
-    url: "https://???",
+    image: "/unknown.svg",
+    url: undefined,
+    "theme-color": "#eeeeee"
   });
   const [twitter, setTwitter] = useState<Twitter>({});
   
@@ -23,10 +25,7 @@ export default function App() {
   const auditMetadata = useCallback(async (msg?: RequestMessage): Promise<ReturnMessage> => {
 
     async function requestTabId(): Promise<number | undefined> {
-      const [ tab ] = await chrome.tabs.query({
-        active: true,
-        currentWindow: true
-      });
+      const [ tab ] = await chrome.tabs.query({ active: true, currentWindow: true });
       return tab.id;
     }
 
@@ -84,7 +83,7 @@ export default function App() {
           <div className="sitedata">
             <h1 className="title">{title}</h1>
             <p className="link">
-              <a href="/">{link}</a>
+              <a href={link} target="_blank">{link}</a>
             </p>
           </div>
         </div>
@@ -93,20 +92,8 @@ export default function App() {
           <button type="button" onClick={reloadMetadata}>Reload Metadata</button>
         </div>
       </header>
-      <main>
-        <section className="opengraph-card">
-          <p>{openGraph.title}</p>
-          <p>{openGraph.description}</p>
-          <p>{openGraph.type}</p>
-          <img src={openGraph.image} />
-          <a href={openGraph.url}>{openGraph.url}</a>
-        </section>
-        <section className="twitter-card">
-          <p>{twitter.card}</p>
-          <p>{twitter.site}</p>
-          <p>{twitter.creator}</p>
-          <p>{twitter.alt}</p>
-        </section>
+      <main className="main">
+        <Default {...openGraph}></Default>
       </main>
     </>
   )
