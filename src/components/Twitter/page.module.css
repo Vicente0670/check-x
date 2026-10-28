@@ -1,0 +1,81 @@
+:root {
+  --app-color-twitter-background: #000;
+  --app-color-twitter-image-background: #16181c;
+  --app-color-twitter-border: #292c2f;
+  --app-color-twitter-title: #ddd;
+  --app-color-twitter-paragraph: #a9a9a9;
+}
+
+.main {
+  background: var(--app-color-twitter-background);
+
+  .header {
+    text-align: center;
+  }
+
+  .content {
+    display: flex;
+    margin: 0 auto;
+    aspect-ratio: 4 / 1;
+    height: 7rem;
+    border: 1px solid var(--app-color-twitter-border);
+    border-radius: .5rem;
+    overflow: hidden;
+
+    .image {
+      border-right: 1px solid var(--app-color-twitter-border);
+
+      img {
+        aspect-ratio: 1;
+        height: 100%;
+        background: var(--app-color-twitter-image-background);
+        object-fit: cover;
+      }
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: .125rem;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: .5rem;
+
+      h1,
+      p,
+      a {
+        font-size: .8rem;
+      }
+
+      h1 {
+        display: -webkit-box;
+        max-width: 100%;
+        color: var(--app-color-twitter-title);
+        word-break: keep-all;
+        text-overflow: ellipsis;
+        line-clamp: 1;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      p,
+      a {
+        display: -webkit-box;
+        max-width: 100%;
+        color: var(--app-color-twitter-paragraph);
+        word-break: keep-all;
+        text-overflow: ellipsis;
+        line-clamp: 1;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      p {
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+}

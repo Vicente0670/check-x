@@ -3,9 +3,10 @@
 }
 
 .main {
+  margin: 0 1rem;
   padding: 1rem;
-  box-sizing: border-box;
   outline: 1px solid var(--app-color-opengraph-outline);
+  border-radius: .5rem;
 
   .header {
     padding-bottom: .25rem;
@@ -27,13 +28,19 @@
     border-radius: .25rem;
 
     div+div {
-      margin-top: .5rem;
+      margin-top: .25rem;
     }
 
-    &>div:has(*) {
+    &>div {
       display: flex;
       align-items: center;
       gap: .25rem;
+
+      &:has(h2:empty),
+      &:has(p:empty),
+      &:has(a:empty) {
+        display: none;
+      }
 
       h2,
       p,
@@ -41,9 +48,19 @@
         margin-right: auto;
       }
 
+      a {
+        display: -webkit-box;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-clamp: 8;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+      }
+
       samp:last-child {
         align-self: right;
-        padding: .25rem;
+        padding: .125rem;
         background: var(--app-color-opengraph-outline);
         border-radius: .25rem;
         color: var(--app-color-paragraph);

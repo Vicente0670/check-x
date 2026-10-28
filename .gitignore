@@ -27,3 +27,6 @@ dist-ssr
 # Extension files
 *.crx
 *.pem
+
+# Testing
+test1.json

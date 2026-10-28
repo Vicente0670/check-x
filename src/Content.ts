@@ -16,16 +16,20 @@ function filterTags(metadata: HTMLMetaElement[]): MetadataContainer {
     
     const property = tag.getAttribute("property") || tag.name;
 
-    if (!property || !PropertySet.has(property))
+    if (!property || !PropertySet.has(property) || !tag.content)
       continue;
 
-    const value = tag.content ?? "";
+    const value = tag.content;
     PropertyMap.set(property, value);
+
+    console.warn(property);
 
     if (property.startsWith(OpenGraphNamesBase)) {
       const name = property.substring(OpenGraphNamesBase.length);
       c.OpenGraph[name as keyof OpenGraph] = value;
     }
+    else if (property == "theme-color")
+      c.OpenGraph[property as keyof OpenGraph] = value;
     else if (property.startsWith(TwitterNamesBase)) {
       const name = property.substring(TwitterNamesBase.length);
       if (name === "card")
@@ -37,6 +41,11 @@ function filterTags(metadata: HTMLMetaElement[]): MetadataContainer {
       console.warn(`${requestMetadata.name}: Unrecognized property "${property}"`);
     }
   }
+
+  // default
+  if (!c.OpenGraph.url) c.OpenGraph.url = location.href;
+  if (!c.OpenGraph.title) c.OpenGraph.title = document.title;
+
   return c;
 }
 

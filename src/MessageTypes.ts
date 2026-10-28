@@ -13,7 +13,7 @@ export type RequestMessage = {
 export type ReturnMessage = RequestMessage & {
   url: string,
   meta: MetadataContainer
-  title?: string,
+  title?: string
 }
 
 export type Events = "reloadpage" | "reloadmetadata" | "initmetadata";
@@ -42,7 +42,9 @@ const OpenGraphNames = {
   Description: "description",
   Type: "type",
   Image: "image",
-  Url: "url"
+  Url: "url",
+  // Again, not actually an OG tag
+  ThemeColor: "theme-color",
 }
 
 const TwitterNames = {
@@ -56,7 +58,12 @@ export const OpenGraphNamesBase = "og:";
 export const TwitterNamesBase = "twitter:";
 
 const OpenGraphPropList: string[] = Object.values(OpenGraphNames)
-  .map((e): string => { return OpenGraphNamesBase + e });
+  .map((e): string => {
+    if (e == OpenGraphNames.ThemeColor)
+      return e;
+    return OpenGraphNamesBase + e
+  }
+);
 const TwitterPropList: string[] = Object.values(TwitterNames)
   .map((e): string => { return TwitterNamesBase + e });
 
@@ -64,6 +71,7 @@ export const PropertySet: Set<string> = new Set(
   OpenGraphPropList.concat(TwitterPropList)
 );
 
+// Why do we need this?
 export const PropertyMap: Map<string, string> = new Map();
 
 PropertySet.forEach(e => PropertyMap.set(e, ""));

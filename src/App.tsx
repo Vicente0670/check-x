@@ -3,17 +3,18 @@ import { useCallback, useEffect, useState } from "react";
 import { ISDEV, type OpenGraph, type RequestMessage, type ReturnMessage, type Twitter } from "./MessageTypes";
 import type { MouseEvent } from "react";
 import Default from "./components/Default/Default";
+import TwitterCard from "./components/Twitter/Twitter";
 
 export default function App() {
   const [title, setTitle] = useState<string>("Not a valid page");
-  const [link, setLink] = useState<string>("Try localhost or another domain.");
+  const [link, setLink] = useState<string>("Try visiting another domain, localhost, or refreshing the metadata.");
   const [openGraph, setOpenGraph] = useState<OpenGraph>({
     title: "No title provided",
     description: "No description provided",
     type: "website",
     image: "/unknown.svg",
     url: undefined,
-    "theme-color": "#eeeeee"
+    "theme-color": undefined
   });
   const [twitter, setTwitter] = useState<Twitter>({});
   
@@ -47,7 +48,16 @@ export default function App() {
       return res.meta.OpenGraph;
     });
     setTwitter(() => {
-      return res.meta.Twitter;
+      // Pull default values from OpenGraph
+      const t = res.meta.Twitter;
+      const o = res.meta.OpenGraph;
+      const names = Object.keys(o);
+      for (let i = 0; i < names.length; i++) {
+        const name = names[i] as keyof OpenGraph;
+        if (!t[name])
+          t[name] = o[name];
+      }
+      return t;
     });
 
     return res;
@@ -80,12 +90,6 @@ export default function App() {
             src="/favicon.svg"
             alt="Logo"
           />
-          <div className="sitedata">
-            <h1 className="title">{title}</h1>
-            <p className="link">
-              <a href={link} target="_blank">{link}</a>
-            </p>
-          </div>
         </div>
         <div className="functions">
           <button type="button" onClick={reloadPage}>Reload Page</button>
@@ -94,6 +98,7 @@ export default function App() {
       </header>
       <main className="main">
         <Default {...openGraph}></Default>
+        <TwitterCard {...twitter}></TwitterCard>
       </main>
     </>
   )
