@@ -68,3 +68,9 @@
     }
   }
 }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --app-color-opengraph-outline: #cfcfcf;
+  }
+}

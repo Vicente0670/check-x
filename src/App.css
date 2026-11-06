@@ -1,6 +1,7 @@
 :root {
   --app-color-background-header: #340000;
   --app-color-text-shadow: #000;
+  --app-colorfilter-logo: invert(.925) drop-shadow(2px 2px 0px var(--app-color-text-shadow));
 }
 
 .header {
@@ -21,8 +22,7 @@
       aspect-ratio: 1;
       height: 1.25rem;
       width: 1.25rem;
-      filter:
-        invert(.925) drop-shadow(2px 2px 0px var(--app-color-text-shadow));
+      filter: var(--app-colorfilter-logo);
     }
 
     .sitedata {
@@ -79,5 +79,12 @@
 
   &>section {
     box-sizing: border-box;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --app-color-background-header: #d54848;
+    --app-color-text-shadow: #00000020;
   }
 }

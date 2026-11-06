@@ -87,6 +87,7 @@ button {
   outline-offset: -2px;
   outline: 2px solid transparent;
   text-shadow: 1px 1px 0px #000000;
+  color: #eee;
   font-size: var(--app-scale-p);
   font-weight: bold;
   transition-property: background-color, outline-color, color;
@@ -130,5 +131,31 @@ section {
     border: none;
     outline: none;
     background: var(--app-color-background-no-image);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --app-color-background-primary: #e8e8e8;
+    --app-color-background-button: #761b1b;
+    --app-color-background-button-hover: #222;
+    --app-color-background-button-active: #000;
+    --app-color-background-button-disabled: #d2d2d2;
+    --app-color-background-button-text-disabled: #aaa;
+    --app-color-background-code: #c4c4c4;
+    --app-color-semantics: #333;
+    --app-color-paragraph: #6a6a6a;
+    --app-color-background-no-image: #d8d8d8;
+
+    --app-color-accent: #bf2e2e;
+  }
+
+  html,
+  body {
+    color-scheme: light;
+  }
+
+  button {
+    text-shadow: none;
   }
 }
