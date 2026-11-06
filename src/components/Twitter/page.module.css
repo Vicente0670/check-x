@@ -7,7 +7,10 @@
 }
 
 .main {
+  padding: 1rem;
+  padding-top: .25rem;
   background: var(--app-color-twitter-background);
+  box-sizing: border-box;
 
   .header {
     text-align: center;
@@ -20,8 +23,9 @@
     height: 7rem;
     border: 1px solid var(--app-color-twitter-border);
     border-radius: .5rem;
+    box-sizing: border-box;
     overflow: hidden;
-
+    
     .image {
       border-right: 1px solid var(--app-color-twitter-border);
 
@@ -30,6 +34,7 @@
         height: 100%;
         background: var(--app-color-twitter-image-background);
         object-fit: cover;
+        image-rendering: optimizeQuality;
       }
     }
 
@@ -44,13 +49,9 @@
       h1,
       p,
       a {
-        font-size: .8rem;
-      }
-
-      h1 {
         display: -webkit-box;
         max-width: 100%;
-        color: var(--app-color-twitter-title);
+        font-size: .8rem;
         word-break: keep-all;
         text-overflow: ellipsis;
         line-clamp: 1;
@@ -61,15 +62,11 @@
 
       p,
       a {
-        display: -webkit-box;
-        max-width: 100%;
         color: var(--app-color-twitter-paragraph);
-        word-break: keep-all;
-        text-overflow: ellipsis;
-        line-clamp: 1;
-        overflow: hidden;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
+      }
+
+      h1 {
+        color: var(--app-color-twitter-title);
       }
 
       p {

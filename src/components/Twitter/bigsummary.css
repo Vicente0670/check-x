@@ -1,0 +1,12 @@
+/* I am considering deconstructing page.module.css to fix into this global CSS module. I do not want to continue using !important. */
+.summary_large_image {
+  flex-direction: column;
+  aspect-ratio: 1.4 / 1 !important;
+  height: auto !important;
+  width: 100% !important;
+}
+.summary_large_image img {
+  aspect-ratio: 1.91 / 1 !important;
+  height: auto !important;
+  width: 100% !important;
+}

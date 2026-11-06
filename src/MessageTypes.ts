@@ -12,7 +12,8 @@ export type RequestMessage = {
 
 export type ReturnMessage = RequestMessage & {
   url: string,
-  meta: MetadataContainer
+  meta: MetadataContainer,
+  html: string,
   title?: string
 }
 

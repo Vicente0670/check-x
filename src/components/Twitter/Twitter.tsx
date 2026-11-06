@@ -1,13 +1,14 @@
+import "./bigsummary.css";
 import page from "./page.module.css";
 import type { Twitter } from "../../MessageTypes";
 
 export default function TwitterCard(props: Twitter) {
   return (
-    <section className={`${page.main} ${props.card ?? "summary"}`}>
+    <section className={page.main}>
       <div className={page.header}>
-        <small>Twitter</small>
+        <small>Twitter {props.card ? `(using ${props.card})` : ""}</small>
       </div>
-      <div className={page.content}>
+      <div className={`${page.content} ${props.card}`}>
         <div className={page.image}>
           <img src={props.image ?? "unknown.svg"} alt={props.alt} />
         </div>
