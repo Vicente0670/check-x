@@ -54,6 +54,7 @@
         max-width: 100%;
         font-size: .8rem;
         word-break: keep-all;
+        text-decoration: none;
         text-overflow: ellipsis;
         line-clamp: 1;
         overflow: hidden;

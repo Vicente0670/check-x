@@ -3,7 +3,8 @@ export const ISDEV = false;
 
 export type MetadataContainer = {
   OpenGraph: OpenGraph,
-  Twitter: Twitter
+  Twitter: Twitter,
+  Html?: string
 }
 
 export type RequestMessage = {
@@ -13,7 +14,6 @@ export type RequestMessage = {
 export type ReturnMessage = RequestMessage & {
   url: string,
   meta: MetadataContainer,
-  html: string,
   title?: string
 }
 

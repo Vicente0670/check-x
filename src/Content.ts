@@ -1,4 +1,4 @@
-import { ISDEV, OpenGraphNamesBase, PropertyMap, PropertySet, TwitterNamesBase } from "./MessageTypes";
+import { ISDEV, OpenGraphNamesBase, PropertySet, TwitterNamesBase } from "./MessageTypes";
 import type { MetadataContainer, OpenGraph, RequestMessage, ReturnMessage, Twitter, TwitterCardKeys } from "./MessageTypes";
 
 
@@ -8,6 +8,7 @@ function filterTags(metadata: HTMLMetaElement[]): MetadataContainer {
     OpenGraph: {},
     Twitter: {}
   };
+  let html = "";
   for (let i = 0; i < m.length; i++) {
     const tag: HTMLMetaElement = m[i];
 
@@ -20,9 +21,6 @@ function filterTags(metadata: HTMLMetaElement[]): MetadataContainer {
       continue;
 
     const value = tag.content;
-    PropertyMap.set(property, value);
-
-    console.warn(property);
 
     if (property.startsWith(OpenGraphNamesBase)) {
       const name = property.substring(OpenGraphNamesBase.length);
@@ -40,11 +38,14 @@ function filterTags(metadata: HTMLMetaElement[]): MetadataContainer {
     else {
       console.warn(`${requestMetadata.name}: Unrecognized property "${property}"`);
     }
+    html += tag.outerHTML;
   }
 
   // default
   if (!c.OpenGraph.url) c.OpenGraph.url = location.href;
   if (!c.OpenGraph.title) c.OpenGraph.title = document.title;
+  
+  c.Html = html;
 
   return c;
 }

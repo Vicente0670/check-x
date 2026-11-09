@@ -13,7 +13,7 @@ export default function TwitterCard(props: Twitter) {
           <img src={props.image ?? "unknown.svg"} alt={props.alt} />
         </div>
         <div className={page.text}>
-          <a>{props.url}</a>
+          <a href={props.url}>{props.url}</a>
           <h1>{props.title}</h1>
           <p>{props.description}</p>
         </div>
